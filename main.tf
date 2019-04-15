@@ -1,3 +1,6 @@
+provider "terraform" {
+  version = "=0.11.13"
+}
 provider "azurerm" {
   version = "=1.24.0"
 }
