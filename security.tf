@@ -9,7 +9,7 @@ resource "azuread_application" "aks_app" {
 }
 
 resource "azuread_service_principal" "aks_sp" {
-  application_id = "${azurerm_azuread_application.aks_app.application_id}"
+  application_id = "${azuread_application.aks_app.application_id}"
 }
 
 resource "azurerm_role_assignment" "current_contributor" {
