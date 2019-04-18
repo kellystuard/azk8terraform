@@ -19,7 +19,8 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     count           = "3"
     vm_size         = "Standard_B2S"
     os_type         = "Linux"
-    os_disk_size_gb = 5
+    // allowed range: 30-1024
+    os_disk_size_gb = 30
   }
   
   service_principal {
