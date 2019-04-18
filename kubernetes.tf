@@ -8,7 +8,7 @@ resource "azurerm_kubernetes_cluster" "k8s" {
 
     ssh_key {
       // TODO: Move in to KeyVault, along with private key
-      key_data = "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAjyf3z+OTor+tvTPguxcAd9zvxQNctsrx2FYXbdI1nD/g7HgZk+Q2XoJ0WYzlZg4dOA8DfZKAw9Vvhm2KnGrsoCQa+nv47Vwwq1bC8GAJ6vQ3VYEOcyLrt54Soo6J907DXmFjFdXpKEMPHnobitOhHk7DiH7+AUWK95TaTHkLtQnKGKbRo0Lv+GHKpcTbWhPj7eCGlPg0rKuRfx995379tXtaenR5oS8HQpcPqR99fx6drmd0FD5P2fgjN0H1wrEQoPsTG+4Lp2w9Wfs37LQpnObGWcpSgbaMdNYBv4/1mzlBPPtjlmFyNWjcXb8nmcICbcWyp57VbBzeXx8ydpYSmw== azure
+      key_data = "${chomp(tls_private_key.kube_key.public_key_openssh)}"
     }
   }
 
