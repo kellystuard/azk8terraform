@@ -1,6 +1,10 @@
 provider "azuread" {
   version = "=0.1.0"
-  }
+}
+
+resource "kube_key" "ssh_key" {
+  algorithm = "RSA"
+}
 
 data "azurerm_subscription" "primary" {}
 
