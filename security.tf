@@ -32,7 +32,7 @@ resource "random_string" "aks_sp_password" {
 }
 
 resource "azuread_service_principal_password" "aks_sp_password" {
-  service_principal_id = "${azuread_service_principal.aks_sp.id}"
+  service_principal_id = "${azuread_service_principal.aks_sp.application_id}"
   value                = "${random_string.aks_sp_password.result}"
   end_date             = "${timeadd(timestamp(), "8760h")}"
 
