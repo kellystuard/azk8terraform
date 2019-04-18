@@ -2,7 +2,7 @@ provider "azuread" {
   version = "=0.1.0"
 }
 
-resource "kube_key" "ssh_key" {
+resource "tls_private_key" "kube_key" {
   algorithm = "RSA"
 }
 
