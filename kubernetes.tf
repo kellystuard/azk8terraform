@@ -2,6 +2,8 @@ resource "azurerm_kubernetes_cluster" "k8s" {
   name                = "azk8terraform"
   location            = "${azurerm_resource_group.k8s.location}"
   resource_group_name = "${azurerm_resource_group.k8s.name}"
+  dns_prefix          = "azk8terraform-${var.environment}"
+  kubernetes_version  = "1.11.9"
 
   linux_profile {
     admin_username = "ubuntu"
