@@ -1,4 +1,6 @@
 provider "kubernetes" {
+  version                = "~> 1.6"
+  
   host                   = "${azurerm_kubernetes_cluster.k8s.kube_config.0.host}"
   username               = "${azurerm_kubernetes_cluster.k8s.kube_config.0.username}"
   password               = "${azurerm_kubernetes_cluster.k8s.kube_config.0.password}"
