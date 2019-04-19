@@ -8,5 +8,8 @@ output "host" {
 }
 
 output "k8s_rsvp_ip" {
-  value = "${azurerm_public_ip.k8s_rsvp.ip_address}"
+  value = "${kubernetes_service.rsvp.ip}"
+}
+output "k8s_rsvp_hostname" {
+  value = "${kubernetes_service.rsvp.hostname}"
 }
