@@ -11,10 +11,14 @@ provider "tls" {
   version = "~> 2.0"
 }
 
+resource "kubernetes_namespace" "rsvp-application" {
+  name = "rsvp-application"
+}
+
 resource "kubernetes_deployment" "rsvp_db" {
   metadata {
     name      = "rsvp-db"
-    namespace = "testing-jsayar"
+    namespace = "rsvp-application"
   }
   spec {
     replicas = 1
@@ -44,7 +48,7 @@ resource "kubernetes_deployment" "rsvp_db" {
 resource "kubernetes_service" "mongodb" {
   metadata {
     name      = "mongodb"
-    namespace = "testing-jsayar"
+    namespace = "rsvp-application"
     labels {
       app = "rsvpdb"
     }
@@ -63,7 +67,7 @@ resource "kubernetes_service" "mongodb" {
 resource "kubernetes_deployment" "rsvp" {
   metadata {
     name      = "rsvp"
-    namespace = "testing-jsayar"
+    namespace = "rsvp-application"
   }
   spec {
     replicas = 1
@@ -94,7 +98,7 @@ resource "kubernetes_deployment" "rsvp" {
 resource "kubernetes_service" "rsvp" {
   metadata {
     name      = "rsvp"
-    namespace = "testing-jsayar"
+    namespace = "rsvp-application"
     labels {
       apps = "rsvp"
     }
