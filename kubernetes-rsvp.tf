@@ -16,7 +16,7 @@ resource "kubernetes_namespace" "rsvp-application" {
     name = "rsvp-application"
   }
 }
-/*
+
 resource "kubernetes_deployment" "rsvp_db" {
   metadata {
     name      = "rsvp-db"
@@ -46,7 +46,7 @@ resource "kubernetes_deployment" "rsvp_db" {
     }
   }
 }
-*/
+
 resource "kubernetes_service" "mongodb" {
   metadata {
     name      = "mongodb"
@@ -65,14 +65,11 @@ resource "kubernetes_service" "mongodb" {
     }
   }
 }
-/*
+
 resource "kubernetes_deployment" "rsvp" {
   metadata {
     name      = "rsvp"
     namespace = "rsvp-application"
-    labels {
-      app = "rsvp"
-    }
   }
   spec {
     replicas = 1
@@ -99,7 +96,7 @@ resource "kubernetes_deployment" "rsvp" {
     }
   }
 }
-*/
+
 resource "kubernetes_service" "rsvp" {
   metadata {
     name      = "rsvp"
