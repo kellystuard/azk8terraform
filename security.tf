@@ -22,7 +22,7 @@ resource "random_string" "aks_sp_password" {
   special = true
 
   keepers = {
-    service_principal = azuread_service_principal.aks_sp.id
+    service_principal = "${azuread_service_principal.aks_sp.id}"
   }
 }
 
