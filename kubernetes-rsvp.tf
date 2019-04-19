@@ -12,7 +12,9 @@ provider "tls" {
 }
 
 resource "kubernetes_namespace" "rsvp-application" {
-  name = "rsvp-application"
+  metadata {
+    name = "rsvp-application"
+  }
 }
 
 resource "kubernetes_deployment" "rsvp_db" {
