@@ -14,7 +14,7 @@ resource "azuread_application" "aks_app" {
 }
 
 resource "azuread_service_principal" "aks_sp" {
-  application_id = azuread_application.aks_app.application_id
+  application_id = "${azuread_application.aks_app.application_id}"
 }
 
 resource "random_string" "aks_sp_password" {
@@ -27,8 +27,8 @@ resource "random_string" "aks_sp_password" {
 }
 
 resource "azuread_service_principal_password" "aks_sp_password" {
-  service_principal_id = azuread_service_principal.aks_sp.id
-  value                = random_string.aks_sp_password.result
+  service_principal_id = "${azuread_service_principal.aks_sp.id}"
+  value                = "${random_string.aks_sp_password.result}"
   end_date_relative    = "${(var.years * 24 * 365)}h"
 
   # This stops be 'end_date' changing on each run and causing a new password to be set
@@ -39,7 +39,7 @@ resource "azuread_service_principal_password" "aks_sp_password" {
 }
 
 resource "azurerm_role_assignment" "current_contributor" {
-  scope                = data.azurerm_subscription.primary.id
+  scope                = "${data.azurerm_subscription.primary.id}"
   role_definition_name = "Contributor"
-  principal_id         = azuread_service_principal.aks_sp.id
+  principal_id         = "${azuread_service_principal.aks_sp.id}"
 }
