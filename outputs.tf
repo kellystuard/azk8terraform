@@ -4,5 +4,9 @@ output "kube_config" {
 }
 
 output "host" {
-  value     = "${azurerm_kubernetes_cluster.k8s.kube_config.0.host}"
+  value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.host}"
+}
+
+output "k8s_rsvp_ip" {
+  value = "${azurerm_public_ip.k8s_rsvp}"
 }
