@@ -83,7 +83,7 @@ resource "kubernetes_deployment" "rsvp" {
     }
   }
   spec {
-    replicas = 1
+    replicas = 3
     selector {
       match_labels {
         app = "rsvp"
