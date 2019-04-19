@@ -21,9 +21,17 @@ resource "kubernetes_deployment" "rsvp_db" {
   metadata {
     name      = "rsvp-db"
     namespace = "rsvp-application"
+    labels {
+      appdb = "rsvpdb"
+    }
   }
   spec {
     replicas = 1
+    selector {
+      match_labels {
+        appdb = "rsvpdb"
+      }
+    }
     template {
       metadata {
         labels {
@@ -76,7 +84,6 @@ resource "kubernetes_deployment" "rsvp" {
   }
   spec {
     replicas = 1
-    
     selector {
       match_labels {
         app = "rsvp"
