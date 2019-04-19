@@ -8,5 +8,5 @@ output "host" {
 }
 
 output "k8s_rsvp_ip" {
-  value = "${azurerm_public_ip.k8s_rsvp}"
+  value = "${azurerm_public_ip.k8s_rsvp.ip_address}"
 }
