@@ -29,7 +29,7 @@ resource "random_string" "aks_sp_password" {
 resource "azuread_service_principal_password" "aks_sp_password" {
   service_principal_id = "${azuread_service_principal.aks_sp.id}"
   value                = "${random_string.aks_sp_password.result}"
-  end_date_relative    = "${(10 * 24 * 365)}h"
+  end_date             = "${timeadd(timestamp(), "8760h")}"
 
   # This stops be 'end_date' changing on each run and causing a new password to be set
   # to get the date to change here you would have to manually taint this resource...
