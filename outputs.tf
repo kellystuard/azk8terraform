@@ -8,8 +8,8 @@ output "host" {
 }
 
 output "k8s_rsvp_ip" {
-  value = "${kubernetes_service.rsvp.ip}"
+  value = "${kubernetes_service.rsvp.load_balancer_ingress.ip}"
 }
 output "k8s_rsvp_hostname" {
-  value = "${kubernetes_service.rsvp.hostname}"
+  value = "${kubernetes_service.rsvp.load_balancer_ingress.hostname}"
 }
