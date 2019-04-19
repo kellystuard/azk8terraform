@@ -113,14 +113,6 @@ resource "kubernetes_deployment" "rsvp" {
   }
 }
 
-resource "azurerm_public_ip" "k8s_rsvp" {
-  name                         = "k8s_rsvp"
-  location                     = "${azurerm_resource_group.k8s.location}"
-  resource_group_name          = "${azurerm_resource_group.k8s.name}"
-  allocation_method            = "Static"
-  sku                          = "Basic"
-}
-
 resource "kubernetes_service" "rsvp" {
   metadata {
     name      = "rsvp"
