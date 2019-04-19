@@ -24,7 +24,7 @@ resource "azurerm_kubernetes_cluster" "k8s" {
   }
   
   service_principal {
-    client_id     = "${azuread_service_principal_password.aks_sp_password.id}"
+    client_id     = "${azuread_service_principal.aks_sp.id}"
     client_secret = "${random_string.aks_sp_password.result}"
   }
   
