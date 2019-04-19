@@ -130,6 +130,8 @@ resource "kubernetes_service" "rsvp" {
     }
   }
   spec {
+    type             = "LoadBalancer"
+    load_balancer_ip = "${azurerm_public_ip.k8s_rsvp.ip_address}"
     port {
       name      = "tcp-31081-5000"
       protocol  = "TCP"
@@ -139,6 +141,5 @@ resource "kubernetes_service" "rsvp" {
     selector {
       app = "rsvp"
     }
-    type = "LoadBalancer"
   }
 }
