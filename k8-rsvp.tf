@@ -9,6 +9,10 @@ provider "kubernetes" {
   cluster_ca_certificate = "${base64decode(azurerm_kubernetes_cluster.k8s.kube_config.0.cluster_ca_certificate)}"
 }
 
+provider "tls" {
+  version = "~> 2.0"
+}
+
 resource "kubernetes_deployment" "rsvp_db" {
   metadata {
     name      = "rsvp-db"
