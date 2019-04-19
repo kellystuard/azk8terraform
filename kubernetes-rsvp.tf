@@ -70,6 +70,9 @@ resource "kubernetes_deployment" "rsvp" {
   metadata {
     name      = "rsvp"
     namespace = "rsvp-application"
+    labels {
+      app = "rsvp"
+    }
   }
   spec {
     replicas = 1
