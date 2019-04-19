@@ -17,7 +17,7 @@ resource "azurerm_kubernetes_cluster" "k8s" {
   agent_pool_profile {
     name            = "default"
     count           = "3"
-    vm_size         = "Standard_B2S"
+    vm_size         = "Standard_B2s"
     os_type         = "Linux"
     // allowed range: 30-1024
     os_disk_size_gb = 30
