@@ -14,6 +14,12 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     }
   }
 
+  addon_profile {
+    http_application_routing {
+      enabled = false
+    }
+  }
+
   agent_pool_profile {
     name            = "default"
     count           = "3"
@@ -27,7 +33,14 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     client_id     = "${azuread_application.aks_app.application_id}"
     client_secret = "${random_string.aks_sp_password.result}"
   }
-  
+
+  network_profile {
+    network_plugin     = "azure"
+    dns_service_ip     = "10.0.0.10"
+    docker_bridge_cidr = "172.17.0.1/16"
+    service_cidr       = "10.0.0.0/16"
+  }
+
   tags {
     Environment = "${var.environment}"
   }
