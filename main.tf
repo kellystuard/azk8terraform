@@ -45,5 +45,5 @@ resource "azurerm_public_ip" "k8s" {
   location            = "${azurerm_resource_group.k8s.location}"
   resource_group_name = "${azurerm_resource_group.k8s.name}"
   sku                 = "Standard"
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
 }
