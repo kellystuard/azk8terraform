@@ -10,9 +10,9 @@ locals {
 }
 
 resource "azurerm_application_gateway" "network" {
-  name                = "${var.app_gateway_name}"
-  resource_group_name = "${data.azurerm_resource_group.k8s.name}"
-  location            = "${data.azurerm_resource_group.k8s.location}"
+  name                = "k8s"
+  resource_group_name = "${azurerm_resource_group.k8s.name}"
+  location            = "${azurerm_resource_group.k8s.location}"
 
   sku {
     name     = "Standard_v2"
