@@ -27,6 +27,7 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     os_type         = "Linux"
     // allowed range: 30-1024
     os_disk_size_gb = 30
+    vnet_subnet_id  = "${azurerm_subnet.kubesubnet.id}"
   }
   
   service_principal {
