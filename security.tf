@@ -36,6 +36,11 @@ resource "azuread_service_principal_password" "aks_sp_password" {
   lifecycle {
     ignore_changes = ["end_date"]
   }
+  # wait 30s for server replication before attempting role assignment creation
+  # https://github.com/terraform-providers/terraform-provider-azuread/issues/4
+  provisioner "local-exec" {
+    command = "sleep 30"
+  }
 }
 
 resource "azurerm_role_assignment" "current_contributor" {
