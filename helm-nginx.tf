@@ -32,6 +32,6 @@ data "helm_repository" "azure-samples" {
 
 data "helm_release" "aks-helloworld" {
     name       = "aks-helloworld"
-    repository = "${helm_repository.azure-samples.metadata.0.name}"
+    repository = "${data.helm_repository.azure-samples.metadata.0.name}"
     chart      = "aks-helloworld"
 }
