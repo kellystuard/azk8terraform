@@ -41,7 +41,8 @@ resource "azurerm_application_gateway" "network" {
   }
 
   backend_address_pool {
-    name = "${local.backend_address_pool_name}"
+    name         = "${local.backend_address_pool_name}"
+    ip_addresses = ["${kubernetes_service.nginx.load_balancer_ingress.0.ip}"]
   }
 
   backend_http_settings {
