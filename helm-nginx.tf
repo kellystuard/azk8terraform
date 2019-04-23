@@ -13,7 +13,7 @@ provider "tls" {
   version = "~> 2.0"
 }
 
-data "helm_release" "nginx" {
+resource "helm_release" "nginx" {
   name    = "nginx"
   chart   = "stable/nginx-ingress"
   #version = ""
@@ -34,7 +34,7 @@ data "helm_repository" "azure-samples" {
     url  = "https://azure-samples.github.io/helm-charts/"
 }
 
-data "helm_release" "aks-helloworld" {
+resource "helm_release" "aks-helloworld" {
     name       = "aks-helloworld"
     repository = "${data.helm_repository.azure-samples.metadata.0.name}"
     chart      = "aks-helloworld"
