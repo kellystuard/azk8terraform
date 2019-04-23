@@ -59,6 +59,9 @@ resource "kubernetes_service" "nginx" {
     labels {
       apps = "nginx"
     }
+    annotations {
+      "service.beta.kubernetes.io/azure-load-balancer-internal" = "true"
+    }
   }
   spec {
     type             = "LoadBalancer"
