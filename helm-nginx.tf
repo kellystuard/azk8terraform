@@ -9,7 +9,7 @@ provider "helm" {
   }
 }
 
-resource "helm_release" "nginx" {
+data "helm_release" "nginx" {
   name    = "nginx"
   chart   = "stable/nginx-ingress"
   #version = ""
@@ -23,4 +23,15 @@ resource "helm_release" "nginx" {
     name = "controller.replicaCount"
     value = "3"
   }
+}
+
+data "helm_repository" "azure-samples" {
+    name = "azure-samples"
+    url  = "https://azure-samples.github.io/helm-charts/"
+}
+
+data "helm_release" "aks-helloworld" {
+    name       = "aks-helloworld"
+    repository = "${helm_repository.azure-samples.metadata.0.name}"
+    chart      = "aks-helloworld"
 }
