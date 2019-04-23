@@ -20,6 +20,10 @@ resource "helm_release" "nginx" {
   #"service.beta.kubernetes.io/azure-load-balancer-internal" = "true"
   
   set {
+    name  = "rbac.create"
+    value = "false"
+  }
+  set {
     name  = "controller.service.loadBalancerIP"
     value = "${azurerm_public_ip.k8s.ip_address}"
   }
