@@ -1,5 +1,5 @@
 provider "helm" {
-  #version                = "~> 1.6"
+  version                = "~> 0.9"
   
   kubernetes {
     host                   = "${azurerm_kubernetes_cluster.k8s.kube_config.0.host}"
@@ -7,6 +7,10 @@ provider "helm" {
     client_key             = "${base64decode(azurerm_kubernetes_cluster.k8s.kube_config.0.client_key)}"
     cluster_ca_certificate = "${base64decode(azurerm_kubernetes_cluster.k8s.kube_config.0.cluster_ca_certificate)}"
   }
+}
+
+provider "tls" {
+  version = "~> 2.0"
 }
 
 data "helm_release" "nginx" {
