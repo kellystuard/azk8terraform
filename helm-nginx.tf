@@ -17,7 +17,7 @@ data "helm_release" "nginx" {
   
   set {
     name  = "controller.service.loadBalancerIP"
-    value = "${azurerm_public_ip.k8s}"
+    value = "${azurerm_public_ip.k8s.ip_address}"
   }
   set {
     name = "controller.replicaCount"
