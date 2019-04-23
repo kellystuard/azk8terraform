@@ -15,6 +15,11 @@ resource "azuread_application" "aks_app" {
 
 resource "azuread_service_principal" "aks_sp" {
   application_id = "${azuread_application.aks_app.application_id}"
+  # wait 30s for server replication before attempting role assignment creation
+  # https://github.com/terraform-providers/terraform-provider-azuread/issues/4
+  provisioner "local-exec" {
+    command = "sleep 30"
+  }
 }
 
 resource "random_string" "aks_sp_password" {
