@@ -9,7 +9,7 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     admin_username = "ubuntu"
 
     ssh_key {
-      // TODO: Move in to KeyVault, along with private key
+      #TODO: Move in to KeyVault, along with private key
       key_data = "${chomp(tls_private_key.kube_key.public_key_openssh)}"
     }
   }
@@ -25,7 +25,7 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     count           = "3"
     vm_size         = "Standard_B2s"
     os_type         = "Linux"
-    // allowed range: 30-1024
+    #allowed range: 30-1024
     os_disk_size_gb = 30
     vnet_subnet_id  = "${azurerm_subnet.kubesubnet.id}"
   }
