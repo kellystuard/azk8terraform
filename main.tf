@@ -26,18 +26,25 @@ resource "azurerm_virtual_network" "k8s" {
   address_space       = ["15.0.0.0/8"]
 }
 
-resource "azurerm_subnet" "kubesubnet" {
-  name                 = "kubesubnet"
-  virtual_network_name = "${azurerm_virtual_network.k8s.name}"
-  resource_group_name  = "${azurerm_resource_group.k8s.name}"
-  address_prefix       = "15.0.0.0/16" 
-}
-
 resource "azurerm_subnet" "appgwsubnet" {
   name                 = "appgwsubnet"
   virtual_network_name = "${azurerm_virtual_network.k8s.name}"
   resource_group_name  = "${azurerm_resource_group.k8s.name}"
-  address_prefix       = "15.1.0.0/16"
+  address_prefix       = "15.0.0.0/16"
+}
+
+resource "azurerm_subnet" "k8s_ingress" {
+  name                 = "k8s-ingress"
+  virtual_network_name = "${azurerm_virtual_network.k8s.name}"
+  resource_group_name  = "${azurerm_resource_group.k8s.name}"
+  address_prefix       = "15.1.0.0/16" 
+}
+
+resource "azurerm_subnet" "k8s_lb" {
+  name                 = "k8s-lb"
+  virtual_network_name = "${azurerm_virtual_network.k8s.name}"
+  resource_group_name  = "${azurerm_resource_group.k8s.name}"
+  address_prefix       = "15.2.0.0/16" 
 }
 
 resource "azurerm_public_ip" "k8s" {
