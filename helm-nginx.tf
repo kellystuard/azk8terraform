@@ -17,7 +17,7 @@ resource "helm_release" "nginx" {
   name    = "nginx"
   chart   = "stable/nginx-ingress"
   #version = ""
-  namespace = ingress-basic
+  namespace = "ingress-basic"
   
   set {
     name  = "rbac.create"
@@ -46,7 +46,7 @@ resource "helm_release" "aks-helloworld" {
     name       = "aks-helloworld"
     repository = "${data.helm_repository.azure-samples.metadata.0.name}"
     chart      = "aks-helloworld"
-    namespace = ingress-basic
+    namespace = "ingress-basic"
     
     set {
       name  = "serviceName"
@@ -62,7 +62,7 @@ resource "helm_release" "aks-helloworld" {
     name       = "aks-helloworld1"
     repository = "${data.helm_repository.azure-samples.metadata.0.name}"
     chart      = "aks-helloworld"
-    namespace = ingress-basic
+    namespace = "ingress-basic"
     
     set {
       name  = "serviceName"
@@ -78,7 +78,7 @@ resource "helm_release" "aks-helloworld" {
     name       = "aks-helloworld2"
     repository = "${data.helm_repository.azure-samples.metadata.0.name}"
     chart      = "aks-helloworld"
-    namespace = ingress-basic
+    namespace = "ingress-basic"
     
     set {
       name  = "serviceName"
