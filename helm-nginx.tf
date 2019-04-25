@@ -36,7 +36,7 @@ resource "helm_release" "nginx" {
   values = [<<EOF
 controller:
   service:
-    loadBalancerIP: ${local.azurerm_subnet_k8s_lb_ip_address}
+    loadBalancerIP: ${local.azurerm_subnet_k8s-ingress_ip_address}
     annotations:
       service.beta.kubernetes.io/azure-load-balancer-internal: "true"
 EOF
