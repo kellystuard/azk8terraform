@@ -58,4 +58,5 @@ resource "azurerm_public_ip" "k8s" {
   resource_group_name = "${azurerm_resource_group.k8s.name}"
   sku                 = "Standard"
   allocation_method   = "Static"
+  domain_name_label   = "azk8terraform-${var.environment}"
 }
