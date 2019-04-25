@@ -39,6 +39,7 @@ controller:
     loadBalancerIP: ${local.azurerm_subnet_k8s-ingress_ip_address}
     annotations:
       service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+      service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "${local.azurerm_subnet_k8s-ingress_subnet_name}"
 EOF
   ]
 }
