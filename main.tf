@@ -10,6 +10,10 @@ provider "azurerm" {
   version = "=1.24.0"
 }
 
+locals {
+  azurerm_subnet_k8s_lb_ip_address = "15.2.0.1"
+}
+
 resource "azurerm_resource_group" "k8s" {
   name     = "k8s"
   location = "Central US"
