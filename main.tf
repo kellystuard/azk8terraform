@@ -11,7 +11,7 @@ provider "azurerm" {
 }
 
 locals {
-  azurerm_subnet_k8s_lb_ip_address = "15.2.0.1"
+  azurerm_subnet_k8s-ingress_ip_address = "15.1.0.250"
 }
 
 resource "azurerm_resource_group" "k8s" {
