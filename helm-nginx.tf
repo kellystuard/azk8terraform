@@ -1,5 +1,5 @@
 provider "helm" {
-  version = "~> 0.9"
+  #version = "~> 0.9"
   
   kubernetes {
     host                   = "${azurerm_kubernetes_cluster.k8s_ingress.kube_config.0.host}"
