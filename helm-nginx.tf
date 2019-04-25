@@ -13,11 +13,17 @@ provider "tls" {
   version = "~> 2.0"
 }
 
+data "helm_repository" "stable" {
+  name = "stable"
+  url  = "https://kubernetes-charts.storage.googleapis.com"
+}
+
 resource "helm_release" "nginx" {
-  name    = "nginx"
-  chart   = "stable/nginx-ingress"
-  #version = ""
-  namespace = "ingress-basic"
+  name       = "nginx"
+  repository = "${data.helm_repository.stable.metadata.0.name}"
+  chart      = "nginx-ingress"
+  #version    = ""
+  #namespace  = "ingress-basic"
   
   set {
     name  = "rbac.create"
@@ -46,7 +52,7 @@ resource "helm_release" "aks-helloworld" {
     name       = "aks-helloworld"
     repository = "${data.helm_repository.azure-samples.metadata.0.name}"
     chart      = "aks-helloworld"
-    namespace = "ingress-basic"
+    #namespace = "ingress-basic"
     
     set {
       name  = "serviceName"
@@ -62,7 +68,7 @@ resource "helm_release" "aks-helloworld1" {
     name       = "aks-helloworld1"
     repository = "${data.helm_repository.azure-samples.metadata.0.name}"
     chart      = "aks-helloworld"
-    namespace = "ingress-basic"
+    #namespace = "ingress-basic"
     
     set {
       name  = "serviceName"
@@ -78,7 +84,7 @@ resource "helm_release" "aks-helloworld2" {
     name       = "aks-helloworld2"
     repository = "${data.helm_repository.azure-samples.metadata.0.name}"
     chart      = "aks-helloworld"
-    namespace = "ingress-basic"
+    #namespace = "ingress-basic"
     
     set {
       name  = "serviceName"
