@@ -12,7 +12,7 @@ provider "azurerm" {
 
 locals {
   azurerm_subnet_k8s-ingress_ip_address  = "${cidrhost(azurerm_subnet.k8s_lb.address_prefix, 1)}"
-  azurerm_subnet_k8s-ingress_subnet_name = "${azurerm_subnet.k8s_lb.subnet}"
+  azurerm_subnet_k8s-ingress_subnet_name = "${azurerm_subnet.k8s_lb.name}"
 }
 
 resource "azurerm_resource_group" "k8s" {
