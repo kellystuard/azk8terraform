@@ -1,0 +1,30 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: acs-helloworld-root-{{.Release.Name}}
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: acs-helloworld-root-{{.Release.Name}}
+    spec:
+      containers:
+      - name: acs-helloworld-root-{{.Release.Name}}
+        image: neilpeterson/aks-helloworld:v1
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: Hello World from Root
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-helloworld-root
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: acs-helloworld-root-{{.Release.Name}}
