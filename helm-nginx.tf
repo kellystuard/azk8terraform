@@ -1,5 +1,5 @@
 provider "helm" {
-  #version = "~> 0.9"
+  version = "~> 0.9"
   
   kubernetes {
     host                   = "${azurerm_kubernetes_cluster.k8s_ingress.kube_config.0.host}"
@@ -22,7 +22,7 @@ resource "helm_release" "nginx" {
   name       = "nginx"
   repository = "${data.helm_repository.stable.metadata.0.name}"
   chart      = "nginx-ingress"
-  #version    = ""
+  version    = "0.24.1"
   #namespace  = "ingress-basic"
   
   set {
