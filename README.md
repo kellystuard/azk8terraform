@@ -8,7 +8,7 @@ cd ..
 
 ### Installation of Applications (Helm)
 ```
-az aks get-credentials --resource-group k8s --name azk8-ingress --overwrite-existing
+az aks get-credentials --resource-group k8s-demo --name kubernetes-demo --overwrite-existing
 cd helm/
 helm init --upgrade
 helm package aks-helloworld/
