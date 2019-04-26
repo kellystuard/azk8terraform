@@ -10,7 +10,7 @@ locals {
 }
 
 resource "azurerm_application_gateway" "network" {
-  name                = "k8s"
+  name                = "gateway-${var.environment}"
   resource_group_name = "${azurerm_resource_group.k8s.name}"
   location            = "${azurerm_resource_group.k8s.location}"
 
@@ -66,5 +66,9 @@ resource "azurerm_application_gateway" "network" {
     http_listener_name         = "${local.listener_name}"
     backend_address_pool_name  = "${local.backend_address_pool_name}"
     backend_http_settings_name = "${local.http_setting_name}"
+  }
+  
+  tags = {
+    environment = "${var.environment}"
   }
 }
