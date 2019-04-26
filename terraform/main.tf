@@ -29,6 +29,10 @@ resource "azurerm_virtual_network" "k8s" {
   location            = "${azurerm_resource_group.k8s.location}"
   resource_group_name = "${azurerm_resource_group.k8s.name}"
   address_space       = ["15.0.0.0/8"]
+  
+  tags = {
+    environment = "${var.environment}"
+  }
 }
 
 resource "azurerm_subnet" "appgwsubnet" {
@@ -59,4 +63,8 @@ resource "azurerm_public_ip" "k8s" {
   sku                 = "Standard"
   allocation_method   = "Static"
   domain_name_label   = "azk8terraform-${var.environment}"
+  
+  tags = {
+    environment = "${var.environment}"
+  }
 }
