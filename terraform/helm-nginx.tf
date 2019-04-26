@@ -44,59 +44,6 @@ EOF
   ]
 }
 
-data "helm_repository" "azure-samples" {
-    name = "azure-samples"
-    url  = "https://azure-samples.github.io/helm-charts/"
-}
-
-resource "helm_release" "aks-helloworld" {
-    name       = "aks-helloworld"
-    repository = "${data.helm_repository.azure-samples.metadata.0.name}"
-    chart      = "aks-helloworld"
-    #namespace = "ingress-basic"
-    
-    set {
-      name  = "serviceName"
-      value = "aks-helloworld"
-    }
-    set {
-      name  = "title"
-      value = "Base URL hit"
-    }
-}
-
-resource "helm_release" "aks-helloworld1" {
-    name       = "aks-helloworld1"
-    repository = "${data.helm_repository.azure-samples.metadata.0.name}"
-    chart      = "aks-helloworld"
-    #namespace = "ingress-basic"
-    
-    set {
-      name  = "serviceName"
-      value = "aks-helloworld1"
-    }
-    set {
-      name  = "title"
-      value = "URL /hello1 hit"
-    }
-}
-
-resource "helm_release" "aks-helloworld2" {
-    name       = "aks-helloworld2"
-    repository = "${data.helm_repository.azure-samples.metadata.0.name}"
-    chart      = "aks-helloworld"
-    #namespace = "ingress-basic"
-    
-    set {
-      name  = "serviceName"
-      value = "aks-helloworld2"
-    }
-    set {
-      name  = "title"
-      value = "URL /hello2 hit"
-    }
-}
-
 # Found at: https://github.com/kubernetes/kubernetes/blob/master/pkg/cloudprovider/providers/azure/azure_loadbalancer.go#L38
 
 # ServiceAnnotationLoadBalancerInternal is the annotation used on the service
