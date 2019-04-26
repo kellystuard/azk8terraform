@@ -1,16 +1,16 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: acs-helloworld-1-{{.Release.Name}}
+  name: aks-helloworld-1-{{.Release.Name}}
 spec:
   replicas: 3
   template:
     metadata:
       labels:
-        app: acs-helloworld-1-{{.Release.Name}}
+        app: aks-helloworld-1-{{.Release.Name}}
     spec:
       containers:
-      - name: acs-helloworld-1-{{.Release.Name}}
+      - name: aks-helloworld-1-{{.Release.Name}}
         image: neilpeterson/aks-helloworld:v1
         ports:
         - containerPort: 80
@@ -21,10 +21,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: aks-helloworld-1
+  name: aks-helloworld-1-{{.Release.Name}}
 spec:
   type: ClusterIP
   ports:
   - port: 80
   selector:
-    app: acs-helloworld-1-{{.Release.Name}}
+    app: aks-helloworld-1-{{.Release.Name}}
