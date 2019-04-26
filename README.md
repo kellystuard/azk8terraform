@@ -1,6 +1,7 @@
 ## Installation of Infrastructure (Terraform)
 ```
 cd terraform/
+terraform init
 terraform apply -auto-approve -var 'environment=demo'
 cd ..
 ```
