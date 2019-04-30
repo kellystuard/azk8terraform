@@ -39,21 +39,21 @@ resource "azurerm_subnet" "appgwsubnet" {
   name                 = "application-gateway"
   virtual_network_name = "${azurerm_virtual_network.k8s.name}"
   resource_group_name  = "${azurerm_resource_group.k8s.name}"
-  address_prefix       = "${cidrsubnet(var.subnet, 8, 0)"
+  address_prefix       = "${cidrsubnet(var.subnet, 8, 0)}"
 }
 
 resource "azurerm_subnet" "k8s_ingress" {
   name                 = "kubernetes-nodes"
   virtual_network_name = "${azurerm_virtual_network.k8s.name}"
   resource_group_name  = "${azurerm_resource_group.k8s.name}"
-  address_prefix       = "${cidrsubnet(var.subnet, 8, 1)"
+  address_prefix       = "${cidrsubnet(var.subnet, 8, 1)}"
 }
 
 resource "azurerm_subnet" "k8s_lb" {
   name                 = "kubernetes-loadbalancers"
   virtual_network_name = "${azurerm_virtual_network.k8s.name}"
   resource_group_name  = "${azurerm_resource_group.k8s.name}"
-  address_prefix       = "${cidrsubnet(var.subnet, 8, 2)"
+  address_prefix       = "${cidrsubnet(var.subnet, 8, 2)}"
 }
 
 resource "azurerm_public_ip" "k8s" {
