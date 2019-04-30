@@ -28,7 +28,7 @@ resource "azurerm_virtual_network" "k8s" {
   name                = "network-${var.environment}"
   location            = "${azurerm_resource_group.k8s.location}"
   resource_group_name = "${azurerm_resource_group.k8s.name}"
-  address_space       = ["15.0.0.0/8"]
+  address_space       = ["${var.subnet}"]
   
   tags = {
     environment = "${var.environment}"
@@ -39,21 +39,21 @@ resource "azurerm_subnet" "appgwsubnet" {
   name                 = "application-gateway"
   virtual_network_name = "${azurerm_virtual_network.k8s.name}"
   resource_group_name  = "${azurerm_resource_group.k8s.name}"
-  address_prefix       = "15.0.0.0/16"
+  address_prefix       = "${cidrsubnet(var.subnet, 8, 0)"
 }
 
 resource "azurerm_subnet" "k8s_ingress" {
   name                 = "kubernetes-nodes"
   virtual_network_name = "${azurerm_virtual_network.k8s.name}"
   resource_group_name  = "${azurerm_resource_group.k8s.name}"
-  address_prefix       = "15.1.0.0/16" 
+  address_prefix       = "${cidrsubnet(var.subnet, 8, 1)"
 }
 
 resource "azurerm_subnet" "k8s_lb" {
   name                 = "kubernetes-loadbalancers"
   virtual_network_name = "${azurerm_virtual_network.k8s.name}"
   resource_group_name  = "${azurerm_resource_group.k8s.name}"
-  address_prefix       = "15.2.0.0/16" 
+  address_prefix       = "${cidrsubnet(var.subnet, 8, 2)"
 }
 
 resource "azurerm_public_ip" "k8s" {
