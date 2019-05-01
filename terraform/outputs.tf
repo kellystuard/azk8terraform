@@ -6,8 +6,8 @@ output "aks_name" {
   value = "${azurerm_kubernetes_cluster.k8s_ingress.name}"
 }
 
-output "public_ip" {
-  value = "${azurerm_public_ip.k8s.ip_address}"
+output "public_host" {
+  value = "${azurerm_public_ip.k8s.fqdn}"
 }
 
 output "k8s-ingress" {
