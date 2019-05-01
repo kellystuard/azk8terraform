@@ -10,7 +10,7 @@ locals {
 }
 
 resource "azurerm_application_gateway" "network" {
-  name                = "gateway-${var.environment}"
+  name                = "gateway-${local.environment}"
   resource_group_name = "${azurerm_resource_group.k8s.name}"
   location            = "${azurerm_resource_group.k8s.location}"
 
