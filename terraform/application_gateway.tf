@@ -69,6 +69,6 @@ resource "azurerm_application_gateway" "network" {
   }
   
   tags = {
-    environment = "${var.environment}"
+    environment = "${local.environment}"
   }
 }
