@@ -10,7 +10,7 @@ cd ..
 
 ### Installation of Applications (Helm)
 ```
-az aks get-credentials --resource-group $(resource_group) --name $(aks_name) --overwrite-existing
+az aks get-credentials --resource-group $resource_group --name $aks_name --overwrite-existing
 cd helm/
 helm init --upgrade
 helm package aks-helloworld/
