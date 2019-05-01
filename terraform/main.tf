@@ -16,22 +16,22 @@ locals {
 }
 
 resource "azurerm_resource_group" "k8s" {
-  name     = "k8s-${var.environment}"
+  name     = "k8s-${local.environment}"
   location = "Central US"
   
   tags = {
-    environment = "${var.environment}"
+    environment = "${local.environment}"
   }
 }
 
 resource "azurerm_virtual_network" "k8s" {
-  name                = "network-${var.environment}"
+  name                = "network-${local.environment}"
   location            = "${azurerm_resource_group.k8s.location}"
   resource_group_name = "${azurerm_resource_group.k8s.name}"
   address_space       = ["${var.subnet}"]
   
   tags = {
-    environment = "${var.environment}"
+    environment = "${local.environment}"
   }
 }
 
@@ -57,14 +57,14 @@ resource "azurerm_subnet" "k8s_lb" {
 }
 
 resource "azurerm_public_ip" "k8s" {
-  name                = "public-ip-${var.environment}"
+  name                = "public-ip-${local.environment}"
   location            = "${azurerm_resource_group.k8s.location}"
   resource_group_name = "${azurerm_resource_group.k8s.name}"
   sku                 = "Standard"
   allocation_method   = "Static"
-  domain_name_label   = "azk8terraform-${var.environment}"
+  domain_name_label   = "azk8terraform-${local.environment}"
   
   tags = {
-    environment = "${var.environment}"
+    environment = "${local.environment}"
   }
 }
