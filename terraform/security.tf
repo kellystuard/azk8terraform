@@ -9,7 +9,7 @@ resource "tls_private_key" "kube_key" {
 data "azurerm_subscription" "primary" {}
 
 resource "azuread_application" "aks_app" {
-  name = "aks_app-${var.environment}"
+  name = "aks_app-${local.environment}"
   available_to_other_tenants = false
 }
 
