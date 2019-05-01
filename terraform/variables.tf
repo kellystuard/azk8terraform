@@ -1,7 +1,10 @@
+resource "random_pet" "environment" {
+}
+
 variable "environment" {
   type        = "string"
   description = "Name of environment. Used to tag resources."
-  default     = "demo"
+  default     = "${random_pet.environment.id}"
 }
 
 variable "subnet" {
