@@ -1,8 +1,8 @@
 resource "azurerm_kubernetes_cluster" "k8s_ingress" {
-  name                = "kubernetes-${var.environment}"
+  name                = "kubernetes-${local.environment}"
   location            = "${azurerm_resource_group.k8s.location}"
   resource_group_name = "${azurerm_resource_group.k8s.name}"
-  dns_prefix          = "azk8-ingress-${var.environment}"
+  dns_prefix          = "azk8-ingress-${local.environment}"
   kubernetes_version  = "1.11.9"
 
   linux_profile {
@@ -43,6 +43,6 @@ resource "azurerm_kubernetes_cluster" "k8s_ingress" {
   }
 
   tags {
-    environment = "${var.environment}"
+    environment = "${local.environment}"
   }
 }
