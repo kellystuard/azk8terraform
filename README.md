@@ -5,6 +5,7 @@ terraform init
 terraform apply -auto-approve
 resource_group=$(terraform output resource_group)
 aks_name=$(terraform output aks_name)
+public_ip=$(terraform output public_ip)
 cd ..
 ```
 
@@ -16,5 +17,5 @@ helm init --upgrade
 helm package aks-helloworld/
 helm install aks-helloworld-0.1.0.tgz
 
-watch wget -qO - http://azk8terraform-demo.centralus.cloudapp.azure.com
+watch wget -qO - $public_ip
 ```
