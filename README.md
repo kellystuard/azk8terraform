@@ -1,5 +1,19 @@
 Important: Creation of these resources costs money. Make sure to follow the "When You are Done" section, or the resources will stay and you will be charged.
 
+## Environment Configuration
+
+### Azure Shell (Recommended)
+To get running, immediately, with no installation of software, use [Azure Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).  
+[![Launch Azure Cloud Shell](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com/)
+
+### PowerShell
+If running locally, make sure to log in with `az login` at the beginning of your session and if your session times out. The following programs need to be installed either manually or through a package manager like [Chocolatey](https://chocolatey.org/):
+* [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+* [Helm](https://helm.sh/docs/using_helm/#installing-helm)
+
+Advanced: Multiple options exist for authenticating with Azure: [CLI](https://www.terraform.io/docs/providers/azurerm/auth/azure_cli.html), [Service Identity](https://www.terraform.io/docs/providers/azurerm/auth/managed_service_identity.html), [Service Principal and Client Certificate](https://www.terraform.io/docs/providers/azurerm/auth/service_principal_client_certificate.html), and [Service Principal and Client Secret](https://www.terraform.io/docs/providers/azurerm/auth/service_principal_client_secret.html).
+
 ## Installation of Infrastructure (Terraform)
 ```
 pushd terraform/
@@ -12,7 +26,7 @@ popd
 ```
 Note: `terraform init` only needs to be run the first time and when providers are changed. If you forget to run it, Terraform will remind you.
 
-### Installation of Applications (Helm)
+## Installation of Applications (Helm)
 ```
 az aks get-credentials --resource-group $resource_group --name $aks_name --overwrite-existing
 pushd helm/
@@ -25,7 +39,7 @@ popd
 ```
 Note: if `helm install` returns `Error: could not find a ready tiller pod`, wait a few seconds and try again. During the upgrade, Tiller is completely down and no Helm functions will work.
 
-### When You are Done
+## When You are Done
 ```
 pushd terraform/
 terraform destroy -auto-approve
