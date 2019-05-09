@@ -51,7 +51,7 @@ popd
 ## Summary
 In this example, the provisioning of the infrastructure and the application are separate steps. This is a process decision; there is nothing to prohibit Terraform from running the helm install. It's done here to show how separate teams can manage separate parts of the system using separate tools. Should a fully-automated system be set up where the entirety of the system is tracked in a single repository, it would make sense to have Terraform do all of setup and management. If this is done, the entirity of the demo would be `terraform init && terraform apply -auto-approve`.
 
-To fit in to an enterprise workflow, either use Terraform Enterprise or link up with a system such as Jenkins that supports a pipeline. If using Jenkins: run `terraform plan`, gain approval of the plan (manual or static analysis), then `run terraform apply` passing the plan.
+To fit in to an enterprise workflow, either use Terraform Enterprise or link up with a system such as Jenkins that supports a deployment pipeline. If using Jenkins: run `terraform plan`, gain approval of the plan (manual or static analysis), then `run terraform apply` passing the plan.
 
 ## When You are Done
 ```
