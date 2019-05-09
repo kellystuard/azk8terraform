@@ -28,7 +28,8 @@ popd
 ```
 
 Out of this entire script block, the important line is `terraform apply`. This looks at the desired state (\*.tf), compares it to the state of the cloud, generates a plan to migrate the cloud state to the desired state, and then applies the plan to the cloud.
-Note: if `helm install` returns `Error: could not find a ready tiller pod`, wait a few seconds and try again. During the upgrade, Tiller is completely down and no Helm functions will work.
+
+Note: If `helm install` returns `Error: could not find a ready tiller pod`, wait a few seconds and try again. During the upgrade, Tiller is completely down and no Helm functions will work.
 
 Note: `terraform init` only needs to be run the first time and when providers are changed. If you forget to run it, Terraform will remind you.
 
