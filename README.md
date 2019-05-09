@@ -1,13 +1,4 @@
-# My Markdown Page
-
-<p class="callout info">A success message</p>
-<p class="callout success">A success message</p>
-<p class="callout warning">A success message</p>
-<p class="callout danger">A success message</p>
-
-Normal markdown text
-
-<p class="callout warning">Important: Creation of these resources costs money. Make sure to follow the "When You are Done" section, or the resources will stay and you will be charged.</p>
+:warning: Important: Creation of these resources costs money. Make sure to follow the "When You are Done" section, or the resources will stay and you will be charged.
 
 ## Environment Configuration
 
