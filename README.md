@@ -48,7 +48,7 @@ popd
 > Note: If `helm install` returns `Error: could not find a ready tiller pod`, wait a few seconds and try again. During the upgrade, Tiller is completely down and no Helm functions will work. The only reason the upgrade is run, in this example, is that he version of helm installed by Terraform is lower than the version used by the Azure CLI.
 
 ## Summary
-In this example, the provisioning of the infrastructure and the application are separate steps. This is a process decision; there is nothing to prohibit Terraform from running the helm install. It's done here to show how separate teams can manage separate parts of the system. Should a fully-automated system be set up where the entirety of the system is tracked in a single repository, it would make sense to have Terraform set it all up and manage it all.
+In this example, the provisioning of the infrastructure and the application are separate steps. This is a process decision; there is nothing to prohibit Terraform from running the helm install. It's done here to show how separate teams can manage separate parts of the system. Should a fully-automated system be set up where the entirety of the system is tracked in a single repository, it would make sense to have Terraform do all of setup and management.
 
 ## When You are Done
 ```
