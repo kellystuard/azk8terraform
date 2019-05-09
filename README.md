@@ -1,3 +1,5 @@
+<c><p class="callout info">Installed via [Ninite](https://ninite.com), updater in `c:\tools\misc\ninite.exe`</p></c>
+
 :warning: Important: Creation of these resources costs money. Make sure to follow the "When You are Done" section, or the resources will stay and you will be charged.
 
 ## Environment Configuration
