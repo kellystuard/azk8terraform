@@ -1,4 +1,4 @@
-<p class="callout warning>Important: Creation of these resources costs money. Make sure to follow the "When You are Done" section, or the resources will stay and you will be charged.</p>
+<p class="callout warning">Important: Creation of these resources costs money. Make sure to follow the "When You are Done" section, or the resources will stay and you will be charged.</p>
 
 ## Environment Configuration
 
