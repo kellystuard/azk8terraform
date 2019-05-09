@@ -1,4 +1,4 @@
-> Important: Creation of these resources costs money. Make sure to follow the "When You are Done" section, or the resources will stay and you will be charged.
+> Important: Azure resources costs money while provisioned. Make sure to follow the "When You are Done" section or the resources will stay and you will be charged.
 
 ## Environment Configuration
 
@@ -6,7 +6,7 @@
 To get running, immediately, with no installation of software, use [Azure Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).  
 [![Launch Azure Cloud Shell](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com/)
 
-From there you can run `git clone https://github.com/kellystuard/azk8terraform` and change to the directory, before following the steps, below.
+From there run `git clone https://github.com/kellystuard/azk8terraform` and change to the directory, before following the steps, below.
 
 ### PowerShell
 If running locally, make sure to log in with `az login` at the beginning of your session and if your session times out. The following programs need to be installed either manually or through a package manager like [Chocolatey](https://chocolatey.org/):
@@ -29,7 +29,7 @@ popd
 
 Out of this entire script block, the important line is `terraform apply`. This looks at the desired state (\*.tf), compares it to the state of the cloud, generates a plan to migrate the cloud state to the desired state, and then applies the plan to the cloud.
 
-> Note: If `helm install` returns `Error: could not find a ready tiller pod`, wait a few seconds and try again. During the upgrade, Tiller is completely down and no Helm functions will work.
+The saving of terraform output to environment variables is used in the next section, where the applications are installed.
 
 > Note: `terraform init` only needs to be run the first time and when providers are changed. If you forget to run it, Terraform will remind you.
 
@@ -45,7 +45,10 @@ watch wget -qO - $public_host
 popd
 ```
 
-> Note: if `helm install` returns `Error: could not find a ready tiller pod`, wait a few seconds and try again. During the upgrade, Tiller is completely down and no Helm functions will work.
+> Note: If `helm install` returns `Error: could not find a ready tiller pod`, wait a few seconds and try again. During the upgrade, Tiller is completely down and no Helm functions will work. The only reason the upgrade is run, in this example, is that he version of helm installed by Terraform is lower than the version used by the Azure CLI.
+
+## Summary
+In this example, the provisioning of the infrastructure and the application are separate steps. This is a process decision; there is nothing to prohibit Terraform from running the helm install. It's done here to show how separate teams can manage separate parts of the system. Should a fully-automated system be set up where the entirety of the system is tracked in a single repository, it would make sense to have Terraform set it all up and manage it all.
 
 ## When You are Done
 ```
