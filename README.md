@@ -45,7 +45,7 @@ watch wget -qO - $public_host
 popd
 ```
 
-Note: if `helm install` returns `Error: could not find a ready tiller pod`, wait a few seconds and try again. During the upgrade, Tiller is completely down and no Helm functions will work.
+> :information_source: Note: if `helm install` returns `Error: could not find a ready tiller pod`, wait a few seconds and try again. During the upgrade, Tiller is completely down and no Helm functions will work.
 
 ## When You are Done
 ```
