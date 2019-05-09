@@ -1,3 +1,7 @@
+A complete example of how to use Terraform to spin up an infrastructure and Helm to spin up applications. Terraform uses Azure to spin up a public IP, application gateway, managed Kubernetes cluster with load-balancer as an ingress, and separates them by virtual network subnets. Helm deploys three simple applications at `/`, `/hello1`, and `/hello2` set up as multiple-pod replica set exposed by ingress service.
+
+The root location of the three applications will be output at the end of provisioning the infrastructure.
+
 > Important: Azure resources cost money while provisioned. Make sure to follow the "When You are Done" section or the resources will stay and you will be charged.
 
 ## Environment Configuration
@@ -50,7 +54,7 @@ popd
 > Note: If `helm install` returns `Error: could not find a ready tiller pod`, wait a few seconds and try again. During the upgrade, Tiller is completely down and no Helm functions will work. The only reason the upgrade is run, in this example, is that the version of helm installed by Terraform is lower than the version used by the Azure CLI. If you use Terraform to install the Helm chart, these steps would not be necessary.
 
 ## Summary
-In this example, the provisioning of the infrastructure and the application are separate steps. This is a process decision; there is nothing to prohibit Terraform from running the helm install. It's done here to show how separate teams can manage separate parts of the system using separate tools. Should a fully-automated system be set up where the entirety of the system is tracked in a single repository, it would make sense to have Terraform do all of setup and management. If this is done, the entirity of the demo would be `terraform init && terraform apply -auto-approve`.
+In this example, the provisioning of the infrastructure and the application are separate steps. This is a process decision; there is nothing to prohibit Terraform from running the helm install. It's done here to show how separate teams can manage separate parts of the system using separate tools. Should a fully-automated system be set up where the entirety of the system is tracked in a single repository, it would make sense to have Terraform do all of setup and management. If this is done, the entirety of the demo would be `terraform init && terraform apply -auto-approve`.
 
 To fit in to an enterprise workflow, either use Terraform Enterprise or link up with a system such as Jenkins that supports a deployment pipeline. If using Jenkins: run `terraform plan` to save the plan, gain approval of the plan (manual or static analysis), then `run terraform apply` passing the plan.
 
