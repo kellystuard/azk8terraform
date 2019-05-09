@@ -10,10 +10,14 @@ The root location of the three applications will be output at the end of provisi
 To get running, immediately, with no installation of software, use [Azure Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).  
 [![Launch Azure Cloud Shell](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com/)
 
-From there pick `Bash` from the environment dropdown, run `git clone https://github.com/kellystuard/azk8terraform`, run `cd azk8terraform`, and follow the steps, below.
+From there pick `Bash` from the environment dropdown, run:
+```
+git clone https://github.com/kellystuard/azk8terraform
+cd azk8terraform
+```
 
-### PowerShell
-If running locally, make sure to log in with `az login` at the beginning of your session and if your session times out. The following programs need to be installed either manually or through a package manager like [Chocolatey](https://chocolatey.org/):
+### Development Environment
+If running locally, make sure to log in with `az login` at the beginning of your session and when your session times out. The following programs need to be installed either manually or through a package manager like [Chocolatey](https://chocolatey.org/):
 * [Git](https://desktop.github.com/) (or manually download repository)
 * [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
