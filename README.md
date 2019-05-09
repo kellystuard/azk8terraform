@@ -6,7 +6,7 @@
 To get running, immediately, with no installation of software, use [Azure Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).  
 [![Launch Azure Cloud Shell](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com/)
 
-From there run `git clone https://github.com/kellystuard/azk8terraform` and change to the directory, before following the steps, below.
+From there pick `Bash` from the environment dropdown, run `git clone https://github.com/kellystuard/azk8terraform` and change to the directory, before following the steps, below.
 
 ### PowerShell
 If running locally, make sure to log in with `az login` at the beginning of your session and if your session times out. The following programs need to be installed either manually or through a package manager like [Chocolatey](https://chocolatey.org/):
