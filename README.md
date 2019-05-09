@@ -1,4 +1,4 @@
-> Important: Azure resources costs money while provisioned. Make sure to follow the "When You are Done" section or the resources will stay and you will be charged.
+> Important: Azure resources cost money while provisioned. Make sure to follow the "When You are Done" section or the resources will stay and you will be charged.
 
 ## Environment Configuration
 
