@@ -33,10 +33,6 @@ resource "helm_release" "nginx" {
     name = "controller.replicaCount"
     value = "3"
   }
-  set {
-    name  = "controller.service.loadBalancerIP"
-    value = "${azurerm_public_ip.k8s.ip_address}"
-  }
 }
 
 # Found at: https://github.com/kubernetes/kubernetes/blob/master/pkg/cloudprovider/providers/azure/azure_loadbalancer.go#L38
