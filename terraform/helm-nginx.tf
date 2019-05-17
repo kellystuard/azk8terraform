@@ -27,7 +27,7 @@ resource "helm_release" "nginx" {
   
   set {
     name  = "rbac.create"
-    value = "true"
+    value = "false"
   }
   set {
     name = "controller.replicaCount"
