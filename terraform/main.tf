@@ -55,16 +55,3 @@ resource "azurerm_subnet" "k8s_lb" {
   resource_group_name  = "${azurerm_resource_group.k8s.name}"
   address_prefix       = "${cidrsubnet(var.subnet, 8, 2)}"
 }
-
-resource "azurerm_public_ip" "k8s" {
-  name                = "public-ip-${local.environment}"
-  location            = "${azurerm_resource_group.k8s.location}"
-  resource_group_name = "${azurerm_kubernetes_cluster.k8s_ingress.node_resource_group}"
-  sku                 = "Standard"
-  allocation_method   = "Static"
-  domain_name_label   = "azk8terraform-${local.environment}"
-  
-  tags = {
-    environment = "${local.environment}"
-  }
-}
