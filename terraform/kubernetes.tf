@@ -35,9 +35,9 @@ resource "azurerm_kubernetes_cluster" "k8s_ingress" {
     client_secret = "${random_string.aks_sp_password.result}"
   }
   
-  #role_based_access_control {
-  #  enabled = true
-  #}
+  role_based_access_control {
+    enabled = true
+  }
 
   network_profile {
     network_plugin     = "azure"
