@@ -16,7 +16,7 @@ git clone https://github.com/kellystuard/azk8terraform
 cd azk8terraform
 ```
 
-### Development Environment
+### Development Environment (Skip if using Azure Shell)
 If running locally, make sure to log in with `az login` at the beginning of your session and when your session times out. The following programs need to be installed either manually or through a package manager like [Chocolatey](https://chocolatey.org/):
 * [Git](https://desktop.github.com/) (or manually download repository)
 * [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
